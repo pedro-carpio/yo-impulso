@@ -16,22 +16,14 @@
 
   <!-- Categories -->
   <section class="categories-section">
-    <h3 class="section-label">Categorias</h3>
-    <div class="categories-scroll">
-      <button
-        class="cat-pill"
-        [class.cat-active]="selectedCategory === null"
-        (click)="selectedCategory = null"
-      >
-        Todos
-      </button>
-      @for (cat of categories; track cat.PK_category) {
-        <button
-          class="cat-pill"
-          [class.cat-active]="selectedCategory === cat.PK_category"
-          (click)="selectCategory(cat.PK_category)"
-        >
-          {{ cat.category }}
+    <h3 class="section-label">Catálogo</h3>
+    <div class="categories-grid">
+      @for (cat of catalogCategories; track cat.id) {
+        <button class="category-card" (click)="selectedCategory = cat.id">
+          <div class="category-image">
+            <img [src]="cat.image" [alt]="cat.name" loading="lazy" />
+          </div>
+          <span class="category-name">{{ cat.name }}</span>
         </button>
       }
     </div>
@@ -39,7 +31,7 @@
 
   <!-- Products grid -->
   <section class="products-section">
-    <h3 class="section-label">Descubre Emprendimientos</h3>
+    <h3 class="section-label">Descubre Productos</h3>
 
     @if (loading) {
       <div class="skeleton-grid">

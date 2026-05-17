@@ -1,0 +1,89 @@
+<div class="fundacion-page">
+  <div class="page-header">
+    <span class="badge badge-ember">FUNDACION</span>
+    <h2 class="page-title">Creacion de Eventos</h2>
+    <p class="page-sub">Publica talleres, ferias y sesiones para la comunidad.</p>
+  </div>
+
+  <app-fundacion-nav />
+
+  <section class="form-card">
+    <div class="form-header">
+      <h3>Nuevo evento</h3>
+      <span class="form-tag">Formulario rapido</span>
+    </div>
+    <div class="form-grid">
+      <label class="field">
+        Nombre del evento
+        <input type="text" placeholder="Ej: Taller 10R: Reducir" />
+      </label>
+      <label class="field">
+        Tipo
+        <select>
+          <option>Capacitacion</option>
+          <option>Taller</option>
+          <option>Feria</option>
+          <option>Evento</option>
+        </select>
+      </label>
+      <label class="field">
+        Fecha
+        <input type="date" />
+      </label>
+      <label class="field">
+        Modalidad
+        <select>
+          <option>Presencial</option>
+          <option>Virtual</option>
+          <option>Hibrido</option>
+        </select>
+      </label>
+      <label class="field">
+        Ubicacion o enlace
+        <input type="text" placeholder="Plaza Colon / Zoom" />
+      </label>
+      <label class="field">
+        Cupos
+        <input type="number" placeholder="40" />
+      </label>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary">Publicar evento</button>
+      <button class="btn btn-outline">Guardar borrador</button>
+    </div>
+  </section>
+
+  <section class="event-list">
+    @for (event of events; track event.id) {
+      <article class="event-card">
+        <div class="event-header">
+          <div>
+            <p class="event-date">{{ event.date }}</p>
+            <h3 class="event-title">{{ event.title }}</h3>
+            <p class="event-meta">{{ event.type }} · {{ event.mode }} · {{ event.location }}</p>
+          </div>
+          <span [class]="'status-pill ' + statusClass(event.status)">{{ event.status }}</span>
+        </div>
+
+        <div class="tag-row">
+          @for (tag of event.tags; track tag) {
+            <span class="tag-chip">{{ tag }}</span>
+          }
+        </div>
+
+        <div class="progress-row">
+          <span>{{ event.registered }} inscritos</span>
+          <span>{{ event.capacity }} cupos</span>
+        </div>
+        <div class="progress">
+          <span [style.width.%]="progressPercent(event)"></span>
+        </div>
+
+        <div class="event-actions">
+          <button class="btn btn-dark">Ver asistencia</button>
+          <button class="btn btn-outline">Editar</button>
+        </div>
+      </article>
+    }
+  </section>
+</div>

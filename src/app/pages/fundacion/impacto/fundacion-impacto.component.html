@@ -1,0 +1,74 @@
+<div class="fundacion-page">
+  <div class="page-header">
+    <span class="badge badge-ember">FUNDACION</span>
+    <h2 class="page-title">Panel de Impacto</h2>
+    <p class="page-sub">Seguimiento de emprendimientos apoyados y sus indicadores clave.</p>
+  </div>
+
+  <app-fundacion-nav />
+
+  <section class="summary-grid">
+    <div class="summary-card">
+      <p class="summary-label">Emprendimientos activos</p>
+      <p class="summary-value">{{ totalActive }}</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Prom. asistencia</p>
+      <p class="summary-value">{{ avgAttendance }}%</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Prom. registro datos</p>
+      <p class="summary-value">{{ avgReporting }}%</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Prom. crecimiento</p>
+      <p class="summary-value">{{ avgGrowth }}%</p>
+    </div>
+  </section>
+
+  <section class="impact-list">
+    @for (row of impactRows; track row.id) {
+      <article class="impact-card">
+        <img [src]="row.mainImage" [alt]="row.businessName" class="impact-img" loading="lazy" />
+        <div class="impact-body">
+          <div class="impact-top">
+            <div>
+              <h3 class="impact-name">{{ row.businessName }}</h3>
+              <p class="impact-meta">{{ row.location }} · {{ row.lastReport }}</p>
+            </div>
+            <span class="badge badge-dark">{{ row.category }}</span>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-line">
+                <span>Asistencia a talleres</span>
+                <span>{{ row.attendanceRate }}%</span>
+              </div>
+              <div class="progress"><span [style.width.%]="row.attendanceRate"></span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-line">
+                <span>Registro de datos</span>
+                <span>{{ row.reportingRate }}%</span>
+              </div>
+              <div class="progress"><span [style.width.%]="row.reportingRate"></span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-line">
+                <span>Crecimiento</span>
+                <span>{{ row.growthScore }}%</span>
+              </div>
+              <div class="progress"><span [style.width.%]="row.growthScore"></span></div>
+            </div>
+          </div>
+
+          <div class="impact-footer">
+            <span class="score-pill">Score {{ impactScore(row) }}</span>
+            <button class="btn btn-dark">Ver detalle</button>
+          </div>
+        </div>
+      </article>
+    }
+  </section>
+</div>

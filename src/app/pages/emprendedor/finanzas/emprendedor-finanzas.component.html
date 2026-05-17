@@ -1,0 +1,71 @@
+<div class="emprendedor-page">
+  <div class="page-header">
+    <span class="badge badge-ember">EMPRENDIMIENTO</span>
+    <h2 class="page-title">Dashboard de Finanzas</h2>
+    <p class="page-sub">Registra ingresos, costos y gastos para ver tu avance.</p>
+  </div>
+
+  <app-emprendedor-nav />
+
+  <section class="summary-grid">
+    <div class="summary-card">
+      <p class="summary-label">Ingreso ultimo mes</p>
+      <p class="summary-value">Bs. {{ lastIncome }}</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Gastos ultimo mes</p>
+      <p class="summary-value">Bs. {{ lastExpenses }}</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Margen ultimo mes</p>
+      <p class="summary-value">Bs. {{ lastMargin }}</p>
+    </div>
+    <div class="summary-card">
+      <p class="summary-label">Margen promedio</p>
+      <p class="summary-value">Bs. {{ avgMargin }}</p>
+    </div>
+  </section>
+
+  <section class="chart-card">
+    <h3>Flujo mensual</h3>
+    <div class="chart-wrap">
+      <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="'line'"></canvas>
+    </div>
+  </section>
+
+  <section class="chart-card">
+    <h3>Margen neto</h3>
+    <div class="chart-wrap">
+      <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"></canvas>
+    </div>
+  </section>
+
+  <section class="entry-card">
+    <div class="entry-header">
+      <h3>Registrar mes</h3>
+      <span class="entry-note">Actualiza hasta 10 registros</span>
+    </div>
+    <div class="entry-grid">
+      <label class="field">
+        Mes
+        <input type="text" placeholder="Nov" [(ngModel)]="draftMonth" name="month" />
+      </label>
+      <label class="field">
+        Ingresos
+        <input type="number" placeholder="1800" [(ngModel)]="draftIncome" name="income" />
+      </label>
+      <label class="field">
+        Costos
+        <input type="number" placeholder="900" [(ngModel)]="draftCosts" name="costs" />
+      </label>
+      <label class="field">
+        Gastos
+        <input type="number" placeholder="400" [(ngModel)]="draftExpenses" name="expenses" />
+      </label>
+    </div>
+    <div class="entry-actions">
+      <button class="btn btn-primary" (click)="addEntry()">Agregar registro</button>
+      <button class="btn btn-outline">Descargar reporte</button>
+    </div>
+  </section>
+</div>

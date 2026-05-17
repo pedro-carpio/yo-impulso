@@ -1,0 +1,135 @@
+.emprendedor-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20) var(--spacing-16) calc(var(--spacing-32) + env(safe-area-inset-bottom, 0px));
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.page-title {
+  margin: 0;
+  font-size: var(--text-heading-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-fredoka);
+  color: var(--color-humus);
+}
+
+.page-sub {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.news-card {
+  background: var(--color-blanco);
+  border-radius: var(--radius-card-compact);
+  padding: var(--spacing-16);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.news-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.news-type {
+  margin: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-musgo-suave);
+}
+
+.news-title {
+  margin: 6px 0 4px;
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-humus);
+}
+
+.news-meta {
+  margin: 0;
+  font-size: 12px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+}
+
+.news-desc {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+}
+
+.status-pill {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status-pendiente {
+  background: var(--color-brote);
+  color: var(--color-azul-ceramica);
+}
+
+.status-nuevo {
+  background: rgba(255, 107, 53, 0.15);
+  color: var(--color-naranja-picaflor);
+}
+
+.status-proximo {
+  background: rgba(43, 168, 145, 0.15);
+  color: var(--color-verde-monte);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+.tag-chip {
+  padding: 4px 8px;
+  border-radius: var(--radius-badge);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  background: var(--color-brote);
+  color: var(--color-bosque);
+}
+
+.news-actions {
+  display: flex;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 960px) {
+  .emprendedor-page {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: var(--spacing-24);
+    padding-right: var(--spacing-24);
+  }
+}

@@ -1,0 +1,37 @@
+<div class="emprendedor-page">
+  <div class="page-header">
+    <span class="badge badge-ember">EMPRENDIMIENTO</span>
+    <h2 class="page-title">Noticias y Capacitaciones</h2>
+    <p class="page-sub">Convocatorias, talleres y ferias para tu crecimiento.</p>
+  </div>
+
+  <app-emprendedor-nav />
+
+  <section class="news-list">
+    @for (item of news; track item.id) {
+      <article class="news-card">
+        <div class="news-top">
+          <div>
+            <p class="news-type">{{ item.type }}</p>
+            <h3 class="news-title">{{ item.title }}</h3>
+            <p class="news-meta">{{ item.date }} · {{ item.location }}</p>
+          </div>
+          <span [class]="'status-pill ' + statusClass(item.status)">{{ item.status }}</span>
+        </div>
+
+        <p class="news-desc">{{ item.description }}</p>
+
+        <div class="tag-row">
+          @for (tag of item.tags; track tag) {
+            <span class="tag-chip">{{ tag }}</span>
+          }
+        </div>
+
+        <div class="news-actions">
+          <button class="btn btn-dark">{{ item.cta }}</button>
+          <button class="btn btn-outline">Ver detalles</button>
+        </div>
+      </article>
+    }
+  </section>
+</div>

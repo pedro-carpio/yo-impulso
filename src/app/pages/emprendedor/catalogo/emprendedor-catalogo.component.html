@@ -1,0 +1,31 @@
+<div class="emprendedor-page">
+  <div class="page-header">
+    <span class="badge badge-ember">EMPRENDIMIENTO</span>
+    <h2 class="page-title">Gestor de Catalogo</h2>
+    <p class="page-sub">Administra tus productos y su disponibilidad.</p>
+  </div>
+
+  <app-emprendedor-nav />
+
+  <section class="catalog-grid">
+    @for (item of items; track item.id) {
+      <article class="catalog-card">
+        <div class="img-wrap">
+          <img [src]="item.image" [alt]="item.name" loading="lazy" />
+          <span [class]="'status-pill ' + statusClass(item.status)">{{ item.status }}</span>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="item-name">{{ item.name }}</h3>
+            <span class="badge badge-dark">{{ item.category }}</span>
+          </div>
+          <p class="item-meta">Stock: {{ item.stock }} · Actualizado: {{ item.updated }}</p>
+          <div class="price-row">
+            <span class="price">Bs. {{ item.price }}</span>
+            <button class="btn btn-outline">Editar</button>
+          </div>
+        </div>
+      </article>
+    }
+  </section>
+</div>

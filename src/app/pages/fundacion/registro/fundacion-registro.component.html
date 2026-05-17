@@ -1,0 +1,42 @@
+<div class="fundacion-page">
+  <div class="page-header">
+    <span class="badge badge-ember">FUNDACION</span>
+    <h2 class="page-title">Registro Asistido</h2>
+    <p class="page-sub">Acompanamiento para emprendedores con baja alfabetizacion digital.</p>
+  </div>
+
+  <app-fundacion-nav />
+
+  <section class="assist-list">
+    @for (profile of profiles; track profile.id) {
+      <article class="assist-card">
+        <div class="assist-top">
+          <div>
+            <h3 class="assist-name">{{ profile.businessName }}</h3>
+            <p class="assist-meta">{{ profile.contactName }} · {{ profile.phone }}</p>
+          </div>
+          <span [class]="'status-pill ' + statusClass(profile.status)">{{ profile.status }}</span>
+        </div>
+
+        <div class="progress-row">
+          <span>Progreso de ficha</span>
+          <span>{{ profile.progress }}%</span>
+        </div>
+        <div class="progress">
+          <span [style.width.%]="profile.progress"></span>
+        </div>
+
+        <div class="need-list">
+          @for (need of profile.needs; track need) {
+            <span class="need-chip">{{ need }}</span>
+          }
+        </div>
+
+        <div class="assist-footer">
+          <span class="last-contact">Ultimo contacto: {{ profile.lastContact }}</span>
+          <button class="btn btn-dark">Abrir ficha</button>
+        </div>
+      </article>
+    }
+  </section>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupabaseService, MarketplaceProduct } from '../../services/supabase.service';
+import { MarketplaceProduct } from '../../services/supabase.service';
 
 export interface AdBanner {
   id: number;
@@ -12,62 +12,90 @@ export interface AdBanner {
 const ADS: AdBanner[] = [
   {
     id: 1,
-    title: 'Semana del Emprendedor',
-    subtitle: 'Descuentos de hasta 30% en productos artesanales seleccionados',
-    cta: 'Ver ofertas',
-    image: 'https://placehold.co/800x200/11221a/a3c6b4?text=Semana+del+Emprendedor',
+    title: 'Descubre Emprendimientos Sostenibles',
+    subtitle: 'Productos artesanales, orgánicos y eco-amigables de emprendedores locales',
+    cta: 'Explorar',
+    image: 'assets/map.png',
   },
   {
     id: 2,
-    title: 'Feria de Productos Organicos',
-    subtitle: 'Este sabado en Plaza Colon. Ingreso libre y gratuito.',
-    cta: 'Mas info',
-    image: 'https://placehold.co/800x200/2a6f54/f2f7f4?text=Feria+Organica',
+    title: 'Apoya el Impacto Social',
+    subtitle: 'Cada compra impacta positivamente en comunidades rurales y emprendedores bolivianos',
+    cta: 'Conocer más',
+    image: 'assets/category/colibri-artesania.webp',
   },
 ];
 
 const MOCK_PROMOTED: MarketplaceProduct[] = [
   {
-    PK_product: 2, FK_entrepreneurship: 2,
-    productName: 'Manta Tejida Andina', salePrice: 280, discountPrice: 240,
-    mainImage: 'https://placehold.co/400x360/11221a/a3c6b4?text=Manta+Andina',
+    PK_product: 1, FK_entrepreneurship: 2,
+    productName: 'Mermelada de Rosa Artesanal', salePrice: 85, discountPrice: 72,
+    mainImage: 'assets/products/alma-de-rosa1.png',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Textiles Andinos' },
+    tbentrepreneurships: { businessName: 'Alma de Rosa' },
   },
   {
-    PK_product: 5, FK_entrepreneurship: 5,
-    productName: 'Bolsas de Yute Artesanales', salePrice: 35, discountPrice: 28,
-    mainImage: 'https://placehold.co/400x360/a3c6b4/11221a?text=Bolsas+Yute',
+    PK_product: 2, FK_entrepreneurship: 3,
+    productName: 'Jabón Saponificado Aloe Vera', salePrice: 45, discountPrice: 38,
+    mainImage: 'assets/products/alma-de-rosa2.jpeg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'EcoEmpaques' },
+    tbentrepreneurships: { businessName: 'Aloe Leben' },
   },
   {
-    PK_product: 8, FK_entrepreneurship: 6,
-    productName: 'Velas de Cera de Abeja', salePrice: 55, discountPrice: 48,
-    mainImage: 'https://placehold.co/400x360/c2d1c6/11221a?text=Velas+Cera',
+    PK_product: 3, FK_entrepreneurship: 4,
+    productName: 'Granola de Amaranto sin Gluten', salePrice: 55, discountPrice: 45,
+    mainImage: 'assets/products/conocete1.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'ArteNatural' },
+    tbentrepreneurships: { businessName: 'Amaria' },
   },
   {
-    PK_product: 9, FK_entrepreneurship: 3,
-    productName: 'Pack Chocolate Artesanal', salePrice: 120, discountPrice: 89,
-    mainImage: 'https://placehold.co/400x360/d97706/ffffff?text=Pack+Chocolate',
+    PK_product: 4, FK_entrepreneurship: 5,
+    productName: 'Bebida de Cúrcuma y Jengibre Orgánica', salePrice: 35, discountPrice: 28,
+    mainImage: 'assets/products/botanica-ancestral1.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Cacao Natural Bolivia' },
+    tbentrepreneurships: { businessName: 'Botánica Ancestral' },
+  },
+  {
+    PK_product: 5, FK_entrepreneurship: 6,
+    productName: 'Piedras Pintadas Decorativas', salePrice: 50, discountPrice: 42,
+    mainImage: 'assets/products/colorina1.jpg',
+    isAvailable: true,
+    tbentrepreneurships: { businessName: 'Colorina by Pao' },
+  },
+  {
+    PK_product: 6, FK_entrepreneurship: 7,
+    productName: 'Collar Minimalista Macarena', salePrice: 120, discountPrice: 99,
+    mainImage: 'assets/products/macarena1.png',
+    isAvailable: true,
+    tbentrepreneurships: { businessName: 'MACARENA' },
+  },
+  {
+    PK_product: 7, FK_entrepreneurship: 8,
+    productName: 'Velas Artesanales Ecológicas', salePrice: 55, discountPrice: 45,
+    mainImage: 'assets/products/ecofriendly.jpeg',
+    isAvailable: true,
+    tbentrepreneurships: { businessName: 'ECOFRIENDLY' },
+  },
+  {
+    PK_product: 8, FK_entrepreneurship: 8,
+    productName: 'Jabón Desengrasante Ecológico', salePrice: 32, discountPrice: 26,
+    mainImage: 'assets/products/ceramica-verde1.png',
+    isAvailable: true,
+    tbentrepreneurships: { businessName: 'ECOFRIENDLY' },
+  },
+  {
+    PK_product: 9, FK_entrepreneurship: 2,
+    productName: 'Jarabe Artesanal de Rosa', salePrice: 65, discountPrice: 55,
+    mainImage: 'assets/products/alma-de-rosa2.jpeg',
+    isAvailable: true,
+    tbentrepreneurships: { businessName: 'Alma de Rosa' },
   },
   {
     PK_product: 10, FK_entrepreneurship: 1,
-    productName: 'Kit Apicultura Familiar', salePrice: 200, discountPrice: 160,
-    mainImage: 'https://placehold.co/400x360/e2ede7/2a6f54?text=Kit+Miel',
+    productName: 'Experiencia de Turismo Responsable', salePrice: 250, discountPrice: 200,
+    mainImage: 'assets/products/ampuy1.jpeg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Apicultura Natural' },
-  },
-  {
-    PK_product: 11, FK_entrepreneurship: 5,
-    productName: 'Cafe Blend Especial 500g', salePrice: 140, discountPrice: 110,
-    mainImage: 'https://placehold.co/400x360/1a3528/f2f7f4?text=Blend+Especial',
-    isAvailable: true,
-    tbentrepreneurships: { businessName: 'Cafe Los Yungas' },
+    tbentrepreneurships: { businessName: 'Ampuy' },
   },
 ];
 
@@ -86,14 +114,9 @@ export class PromocionesComponent implements OnInit {
   gridItems: GridItem[] = [];
   loading = true;
 
-  constructor(private supabase: SupabaseService) {}
-
   ngOnInit(): void {
-    this.supabase.getPromotedProducts().subscribe(prods => {
-      const products = prods.length ? prods : MOCK_PROMOTED;
-      this.gridItems = this.buildGrid(products);
-      this.loading = false;
-    });
+    this.gridItems = this.buildGrid(MOCK_PROMOTED);
+    this.loading = false;
   }
 
   private buildGrid(products: MarketplaceProduct[]): GridItem[] {

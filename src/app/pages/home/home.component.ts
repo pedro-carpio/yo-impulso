@@ -4,6 +4,15 @@ import { RouterLink } from '@angular/router';
 import { SupabaseService, MarketplaceCategory, MarketplaceProduct } from '../../services/supabase.service';
 import { SearchService } from '../../services/search.service';
 
+const CATALOG_CATEGORIES = [
+  { id: 1, name: 'Alimentos', image: 'assets/category/colibri-alimento-final.webp' },
+  { id: 2, name: 'Aseo', image: 'assets/category/colibri-aseo-final.webp' },
+  { id: 3, name: 'Papelería', image: 'assets/category/colibri-papeleria-final.webp' },
+  { id: 4, name: 'Artesanía', image: 'assets/category/colibri-artesania.webp' },
+  { id: 5, name: 'Pet', image: 'assets/category/colibri-pet.webp' },
+  { id: 6, name: 'Cuidado', image: 'assets/category/colibri-cuidado.webp' },
+];
+
 const MOCK_CATEGORIES: MarketplaceCategory[] = [
   { PK_category: 1, category: 'Alimentos' },
   { PK_category: 2, category: 'Artesanias' },
@@ -17,60 +26,60 @@ const MOCK_CATEGORIES: MarketplaceCategory[] = [
 
 const MOCK_PRODUCTS: MarketplaceProduct[] = [
   {
-    PK_product: 1, FK_entrepreneurship: 1,
-    productName: 'Miel Organica 500g', salePrice: 85,
-    mainImage: 'https://placehold.co/400x320/e2ede7/2a6f54?text=Miel',
+    PK_product: 1, FK_entrepreneurship: 2,
+    productName: 'Mermelada de Rosa Artesanal', salePrice: 85, discountPrice: 72,
+    mainImage: 'assets/products/alma-de-rosa1.png',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Apicultura Natural' },
+    tbentrepreneurships: { businessName: 'Alma de Rosa' },
   },
   {
-    PK_product: 2, FK_entrepreneurship: 2,
-    productName: 'Manta Tejida Andina', salePrice: 280, discountPrice: 240,
-    mainImage: 'https://placehold.co/400x320/11221a/a3c6b4?text=Textil',
+    PK_product: 2, FK_entrepreneurship: 3,
+    productName: 'Jabón Saponificado Aloe Vera', salePrice: 45, discountPrice: 38,
+    mainImage: 'assets/products/aloe-leben.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Textiles Andinos' },
+    tbentrepreneurships: { businessName: 'Aloe Leben' },
   },
   {
-    PK_product: 3, FK_entrepreneurship: 3,
-    productName: 'Crema de Cacao Puro', salePrice: 65,
-    mainImage: 'https://placehold.co/400x320/d97706/ffffff?text=Cacao',
+    PK_product: 3, FK_entrepreneurship: 4,
+    productName: 'Granola de Amaranto sin Gluten', salePrice: 55,
+    mainImage: 'assets/products/conocete1.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Cacao Natural' },
+    tbentrepreneurships: { businessName: 'Amaria' },
   },
   {
-    PK_product: 4, FK_entrepreneurship: 4,
-    productName: 'Cafe de Altura 250g', salePrice: 90,
-    mainImage: 'https://placehold.co/400x320/1a3528/f2f7f4?text=Cafe',
+    PK_product: 4, FK_entrepreneurship: 5,
+    productName: 'Bebida de Cúrcuma y Jengibre Orgánica', salePrice: 35, discountPrice: 28,
+    mainImage: 'assets/products/botanica-ancestral1.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Cafe Los Yungas' },
+    tbentrepreneurships: { businessName: 'Botánica Ancestral' },
   },
   {
-    PK_product: 5, FK_entrepreneurship: 5,
-    productName: 'Bolsas de Yute', salePrice: 35, discountPrice: 28,
-    mainImage: 'https://placehold.co/400x320/a3c6b4/11221a?text=Yute',
+    PK_product: 5, FK_entrepreneurship: 6,
+    productName: 'Piedras Pintadas Decorativas', salePrice: 50, discountPrice: 42,
+    mainImage: 'assets/products/colorina1.jpg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'EcoEmpaques' },
+    tbentrepreneurships: { businessName: 'Colorina by Pao' },
   },
   {
-    PK_product: 6, FK_entrepreneurship: 6,
-    productName: 'Chocolate 70% Cacao', salePrice: 45,
-    mainImage: 'https://placehold.co/400x320/2a6f54/ffffff?text=Chocolate',
+    PK_product: 6, FK_entrepreneurship: 7,
+    productName: 'Collar Minimalista Macarena', salePrice: 120, discountPrice: 99,
+    mainImage: 'assets/products/macarena1.png',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Chocolates del Tropico' },
+    tbentrepreneurships: { businessName: 'MACARENA' },
   },
   {
-    PK_product: 7, FK_entrepreneurship: 1,
-    productName: 'Quinua Organica 1kg', salePrice: 70,
-    mainImage: 'https://placehold.co/400x320/e2ede7/1a3528?text=Quinua',
+    PK_product: 7, FK_entrepreneurship: 8,
+    productName: 'Jabón Desengrasante Ecológico', salePrice: 32, discountPrice: 26,
+    mainImage: 'assets/products/ecofriendly.jpeg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'Granos del Altiplano' },
+    tbentrepreneurships: { businessName: 'ECOFRIENDLY' },
   },
   {
-    PK_product: 8, FK_entrepreneurship: 6,
-    productName: 'Velas de Cera de Abeja', salePrice: 55, discountPrice: 48,
-    mainImage: 'https://placehold.co/400x320/c2d1c6/11221a?text=Velas',
+    PK_product: 8, FK_entrepreneurship: 1,
+    productName: 'Experiencia de Turismo Responsable', salePrice: 250,
+    mainImage: 'assets/products/ampuy1.jpeg',
     isAvailable: true,
-    tbentrepreneurships: { businessName: 'ArteNatural' },
+    tbentrepreneurships: { businessName: 'Ampuy' },
   },
 ];
 
@@ -82,6 +91,7 @@ const MOCK_PRODUCTS: MarketplaceProduct[] = [
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+  catalogCategories = CATALOG_CATEGORIES;
   categories: MarketplaceCategory[] = [];
   products: MarketplaceProduct[] = [];
   selectedCategory: number | null = null;
