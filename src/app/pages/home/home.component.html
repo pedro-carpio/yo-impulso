@@ -1,0 +1,89 @@
+<div class="home">
+
+  <!-- Announcement Banner -->
+  <div class="banner-card">
+    <img
+      src="https://placehold.co/800x220/1a3528/a3c6b4?text=Feria+de+Emprendedores+2026"
+      alt="Feria de Emprendedores 2026"
+      class="banner-img"
+    />
+    <div class="banner-overlay">
+      <span class="badge badge-ember banner-badge">NUEVO</span>
+      <h2 class="banner-title">Feria de Emprendedores</h2>
+      <p class="banner-sub">15% de descuento en toda la feria</p>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <section class="categories-section">
+    <h3 class="section-label">Categorias</h3>
+    <div class="categories-scroll">
+      <button
+        class="cat-pill"
+        [class.cat-active]="selectedCategory === null"
+        (click)="selectedCategory = null"
+      >
+        Todos
+      </button>
+      @for (cat of categories; track cat.PK_category) {
+        <button
+          class="cat-pill"
+          [class.cat-active]="selectedCategory === cat.PK_category"
+          (click)="selectCategory(cat.PK_category)"
+        >
+          {{ cat.category }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <!-- Products grid -->
+  <section class="products-section">
+    <h3 class="section-label">Descubre Emprendimientos</h3>
+
+    @if (loading) {
+      <div class="skeleton-grid">
+        @for (n of [1,2,3,4,5,6]; track n) {
+          <div class="skeleton-card"></div>
+        }
+      </div>
+    } @else if (filteredProducts.length === 0) {
+      <div class="empty-state">
+        <p>No se encontraron productos para tu busqueda.</p>
+      </div>
+    } @else {
+      <div class="products-grid">
+        @for (product of filteredProducts; track product.PK_product) {
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                [src]="product.mainImage || 'https://placehold.co/400x320/e2ede7/2a6f54?text=Producto'"
+                [alt]="product.productName"
+                class="product-img"
+                loading="lazy"
+              />
+              @if (product.discountPrice && product.salePrice) {
+                <span class="discount-badge">-{{ discountPercent(product) }}%</span>
+              }
+            </div>
+            <div class="product-info">
+              <p class="product-name">{{ product.productName }}</p>
+              @if (product.tbentrepreneurships?.businessName) {
+                <p class="product-biz">{{ product.tbentrepreneurships!.businessName }}</p>
+              }
+              <div class="product-price-row">
+                @if (product.discountPrice) {
+                  <span class="price-current">Bs. {{ product.discountPrice }}</span>
+                  <span class="price-original">Bs. {{ product.salePrice }}</span>
+                } @else if (product.salePrice) {
+                  <span class="price-current">Bs. {{ product.salePrice }}</span>
+                }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </section>
+
+</div>

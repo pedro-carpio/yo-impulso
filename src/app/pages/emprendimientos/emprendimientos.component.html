@@ -1,0 +1,52 @@
+<div class="emprendimientos">
+
+  <div class="page-header">
+    <h2 class="page-title">Emprendimientos</h2>
+    <p class="page-sub">Conoce los emprendedores de nuestra comunidad</p>
+  </div>
+
+  @if (loading) {
+    <div class="skeleton-list">
+      @for (n of [1,2,3,4]; track n) {
+        <div class="skeleton-row"></div>
+      }
+    </div>
+  } @else if (filtered.length === 0) {
+    <div class="empty-state">
+      <p>No se encontraron emprendimientos.</p>
+    </div>
+  } @else {
+    <div class="list">
+      @for (emp of filtered; track emp.PK_entrepreneurship) {
+        <article class="emp-card">
+          <div class="emp-img-wrap">
+            <img
+              [src]="emp.mainImage || 'https://placehold.co/600x400/e2ede7/2a6f54?text=Emprendimiento'"
+              [alt]="emp.businessName"
+              class="emp-img"
+              loading="lazy"
+            />
+          </div>
+          <div class="emp-body">
+            <div class="emp-top">
+              <h3 class="emp-name">{{ emp.businessName }}</h3>
+              @if (emp.tbmarketplacecategories?.category) {
+                <span class="badge badge-dark">{{ emp.tbmarketplacecategories!.category }}</span>
+              }
+            </div>
+            <p class="emp-desc">{{ emp.description }}</p>
+            <div class="emp-meta">
+              @if (emp.locationType) {
+                <span class="meta-chip">{{ locationIcon(emp.locationType) }} {{ emp.locationType }}</span>
+              }
+              @if (emp.isVirtual) {
+                <span class="meta-chip">🌐 Virtual</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  }
+
+</div>

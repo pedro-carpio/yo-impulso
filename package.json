@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "assets:empre": "node scripts/process-empre-assets.mjs",
+    "seed:empre": "node scripts/generate-empre-sql.mjs"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@angular/service-worker": "^17.3.0",
+    "@supabase/supabase-js": "^2.105.4",
     "aws-amplify": "^6.6.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -41,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sharp": "^0.34.4",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5"
   }

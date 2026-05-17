@@ -1,0 +1,61 @@
+<div class="promociones">
+
+  <div class="page-header">
+    <span class="badge badge-ember promo-badge-title">OFERTAS</span>
+    <h2 class="page-title">Promociones</h2>
+    <p class="page-sub">Los mejores descuentos de nuestra comunidad</p>
+  </div>
+
+  @if (loading) {
+    <div class="skeleton-grid">
+      @for (n of [1,2,3,4]; track n) {
+        <div class="skeleton-card"></div>
+      }
+    </div>
+  } @else {
+    <div class="promo-grid">
+      @for (item of gridItems; track item.data) {
+        @if (isAd(item)) {
+          <div class="ad-banner">
+            <img [src]="item.data.image" [alt]="item.data.title" class="ad-img" loading="lazy" />
+            <div class="ad-overlay">
+              <h3 class="ad-title">{{ item.data.title }}</h3>
+              <p class="ad-sub">{{ item.data.subtitle }}</p>
+              <button class="btn btn-outline ad-cta">{{ item.data.cta }}</button>
+            </div>
+          </div>
+        }
+        @if (isProduct(item)) {
+          <article class="promo-card">
+            <div class="promo-img-wrap">
+              <img
+                [src]="item.data.mainImage || 'https://placehold.co/400x360/e2ede7/2a6f54?text=Promocion'"
+                [alt]="item.data.productName"
+                class="promo-img"
+                loading="lazy"
+              />
+              @if (item.data.discountPrice && item.data.salePrice) {
+                <span class="discount-badge">-{{ discountPercent(item.data) }}%</span>
+              }
+            </div>
+            <div class="promo-info">
+              <p class="promo-name">{{ item.data.productName }}</p>
+              @if (item.data.tbentrepreneurships?.businessName) {
+                <p class="promo-biz">{{ item.data.tbentrepreneurships!.businessName }}</p>
+              }
+              <div class="promo-price-row">
+                @if (item.data.discountPrice) {
+                  <span class="price-promo">Bs. {{ item.data.discountPrice }}</span>
+                  <span class="price-regular">Bs. {{ item.data.salePrice }}</span>
+                } @else if (item.data.salePrice) {
+                  <span class="price-promo">Bs. {{ item.data.salePrice }}</span>
+                }
+              </div>
+            </div>
+          </article>
+        }
+      }
+    </div>
+  }
+
+</div>

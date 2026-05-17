@@ -1,0 +1,98 @@
+<div class="info">
+
+  <!-- Hero identity -->
+  <div class="identity-card">
+    <div class="logo-mark">E</div>
+    <div>
+      <h1 class="identity-name">Ecoimpulso</h1>
+      <p class="identity-tagline">Rumbo a una Llajta sostenible</p>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="card">
+    <h2 class="card-title">Sobre Nosotros</h2>
+    <p class="card-body">
+      Ecoimpulso es una plataforma comunitaria que conecta emprendedores locales con consumidores
+      comprometidos con la sostenibilidad. Nacimos en Cochabamba con el objetivo de impulsar la economia
+      circular y el comercio justo en nuestra region.
+    </p>
+    <p class="card-body">
+      Creemos que cada compra es un voto por el futuro que queremos: uno donde los productores locales
+      prosperen, los residuos disminuyan y la biodiversidad se preserve.
+    </p>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-block">
+      <span class="stat-num">44</span>
+      <span class="stat-desc">Emprendimientos activos</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num">120+</span>
+      <span class="stat-desc">Productos sostenibles</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num">10R</span>
+      <span class="stat-desc">Metodologia circular</span>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <section class="card">
+    <h2 class="card-title">Nuestra Mision</h2>
+    <p class="card-body">
+      Facilitar el acceso a mercados justos para emprendedores locales, promoviendo practicas productivas
+      sostenibles alineadas con la metodologia de las 10R de la economia circular.
+    </p>
+  </section>
+
+  <!-- Vision -->
+  <section class="card">
+    <h2 class="card-title">Nuestra Vision</h2>
+    <p class="card-body">
+      Ser el ecosistema de referencia para el emprendimiento sostenible en Bolivia, donde la tecnologia
+      y la comunidad se unen para construir una economia regenerativa e inclusiva.
+    </p>
+  </section>
+
+  <!-- Impact panel -->
+  <section class="impact-card">
+    <h2 class="impact-title">Las 10R de la Economia Circular</h2>
+    <p class="impact-sub">
+      Nuestra metodologia evalua cada emprendimiento bajo principios de Rechazar, Reducir, Reusar,
+      Reparar, Renovar, Rediseniar, Recuperar, Reciclar, Revalorizar y Regenerar.
+    </p>
+    <div class="tenr-grid">
+      @for (r of tenRs; track r.n) {
+        <div class="tenr-chip">
+          <span class="tenr-num">{{ r.n }}</span>
+          <span class="tenr-label">{{ r.label }}</span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="card">
+    <h2 class="card-title">Contacto</h2>
+    <div class="contact-list">
+      <div class="contact-row">
+        <span class="contact-icon">📧</span>
+        <span class="contact-text">hola&#64;ecoimpulso.bo</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">📍</span>
+        <span class="contact-text">Cochabamba, Bolivia</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">🌐</span>
+        <span class="contact-text">www.ecoimpulso.bo</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="version-note">Ecoimpulso v1.0 · Hecho con amor en Bolivia 🌿</p>
+
+</div>

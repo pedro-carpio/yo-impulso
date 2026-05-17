@@ -1,0 +1,203 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20) var(--spacing-16) calc(var(--spacing-32) + env(safe-area-inset-bottom, 0px));
+}
+
+/* ── Identity card ── */
+.identity-card {
+  background: var(--color-blanco);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-24) var(--spacing-20);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  box-shadow: var(--shadow-card);
+}
+
+.logo-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 40px;
+  background: var(--color-verde-monte);
+  color: var(--color-brisa);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-pulang);
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.identity-name {
+  margin: 0;
+  font-family: var(--font-pulang);
+  font-size: var(--text-heading-sm);
+  color: var(--color-humus);
+  line-height: 1.1;
+}
+
+.identity-tagline {
+  margin: 4px 0 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+}
+
+/* ── Generic card ── */
+.card {
+  background: var(--color-blanco);
+  border-radius: var(--radius-card-compact);
+  padding: var(--spacing-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  box-shadow: var(--shadow-card);
+}
+
+.card-title {
+  margin: 0;
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-humus);
+}
+
+.card-body {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+  line-height: var(--leading-body);
+}
+
+/* ── Stats ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+.stat-block {
+  background: var(--color-blanco);
+  border-radius: var(--radius-card-compact);
+  padding: var(--spacing-16) var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.stat-num {
+  font-family: var(--font-pulang);
+  font-size: var(--text-heading);
+  color: var(--color-humus);
+  line-height: 1.1;
+}
+
+.stat-desc {
+  font-size: 11px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-azul-ceramica);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ── Impact panel (dark) ── */
+.impact-card {
+  background: var(--color-humus);
+  border-radius: var(--radius-card-compact);
+  padding: var(--spacing-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.impact-title {
+  margin: 0;
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-blanco);
+}
+
+.impact-sub {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-musgo-suave);
+  line-height: var(--leading-body);
+}
+
+.tenr-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+.tenr-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-badge);
+  padding: 5px 10px;
+}
+
+.tenr-num {
+  font-family: var(--font-fredoka);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-naranja-picaflor);
+}
+
+.tenr-label {
+  font-size: 12px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-musgo-suave);
+}
+
+/* ── Contact ── */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.contact-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  color: var(--color-bosque);
+}
+
+.version-note {
+  text-align: center;
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-light);
+  color: var(--color-musgo-suave);
+  margin: 0;
+  padding-bottom: var(--spacing-8);
+}
+
+/* ── Desktop ── */
+@media (min-width: 960px) {
+  .info {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: var(--spacing-24);
+    padding-right: var(--spacing-24);
+  }
+}
