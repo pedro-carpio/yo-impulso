@@ -14,30 +14,29 @@ interface ProductWithTags extends MarketplaceProduct {
 interface SustainabilityFilter {
   id: string;
   label: string;
-  icon: string;
+  shortLabel: string;
   category: 'environmental' | 'artisanal' | 'material' | 'social';
-  color: string;
 }
 
 const SUSTAINABILITY_FILTERS: SustainabilityFilter[] = [
-  { id: 'plastico-libre', label: 'Libre de plásticos de un solo uso', icon: '🌍', category: 'environmental', color: 'emerald' },
-  { id: 'proposito', label: 'Diseño con propósito', icon: '💡', category: 'environmental', color: 'sky' },
-  { id: 'ahorro-recursos', label: 'Ahorro de recursos (Agua/Energía)', icon: '💧', category: 'environmental', color: 'blue' },
-  { id: 'empaque-biodegradable', label: 'Empaque minimalista o biodegradable', icon: '♻️', category: 'environmental', color: 'green' },
+  { id: 'plastico-libre', label: 'Libre de plásticos de un solo uso', shortLabel: 'Libre de plásticos', category: 'environmental' },
+  { id: 'proposito', label: 'Diseño con propósito', shortLabel: 'Diseño con propósito', category: 'environmental' },
+  { id: 'ahorro-recursos', label: 'Ahorro de recursos (Agua/Energía)', shortLabel: 'Ahorro de recursos', category: 'environmental' },
+  { id: 'empaque-biodegradable', label: 'Empaque minimalista o biodegradable', shortLabel: 'Empaque biodegradable', category: 'environmental' },
 
-  { id: 'hecho-mano', label: 'Hecho a mano / Con dedicación artesanal', icon: '🤝', category: 'artisanal', color: 'amber' },
-  { id: 'upcycling', label: 'Transformado creativamente (Upcycling)', icon: '✨', category: 'artisanal', color: 'orange' },
-  { id: 'durabilidad', label: 'Hecho para durar', icon: '⏱️', category: 'artisanal', color: 'rose' },
-  { id: 'segunda-mano', label: 'De segunda mano con historia', icon: '📖', category: 'artisanal', color: 'slate' },
+  { id: 'hecho-mano', label: 'Hecho a mano / Con dedicación artesanal', shortLabel: 'Hecho a mano', category: 'artisanal' },
+  { id: 'upcycling', label: 'Transformado creativamente (Upcycling)', shortLabel: 'Upcycling', category: 'artisanal' },
+  { id: 'durabilidad', label: 'Hecho para durar', shortLabel: 'Durable', category: 'artisanal' },
+  { id: 'segunda-mano', label: 'De segunda mano con historia', shortLabel: 'Segunda mano', category: 'artisanal' },
 
-  { id: 'material-reciclado', label: 'Hecho de material reciclado', icon: '🔄', category: 'material', color: 'teal' },
-  { id: 'sabiduria-ancestral', label: 'Sabiduría ancestral', icon: '🌿', category: 'material', color: 'lime' },
-  { id: 'biodegradable', label: 'Biodegradable / Regresa a la tierra', icon: '🌱', category: 'material', color: 'green' },
+  { id: 'material-reciclado', label: 'Hecho de material reciclado', shortLabel: 'Material reciclado', category: 'material' },
+  { id: 'sabiduria-ancestral', label: 'Sabiduría ancestral', shortLabel: 'Sabiduría ancestral', category: 'material' },
+  { id: 'biodegradable', label: 'Biodegradable / Regresa a la tierra', shortLabel: 'Biodegradable', category: 'material' },
 
-  { id: 'suelos-responsable', label: 'Responsable con los suelos / Nutre la tierra', icon: '🌾', category: 'social', color: 'amber' },
-  { id: 'biodiversidad', label: 'Protector de la biodiversidad', icon: '🦋', category: 'social', color: 'pink' },
-  { id: 'impacto-social', label: 'Impacto social positivo / Empleo digno', icon: '🤲', category: 'social', color: 'red' },
-  { id: 'cero-residuos', label: 'Cero residuos (Zero Waste)', icon: '🚫', category: 'social', color: 'purple' },
+  { id: 'suelos-responsable', label: 'Responsable con los suelos / Nutre la tierra', shortLabel: 'Nutre la tierra', category: 'social' },
+  { id: 'biodiversidad', label: 'Protector de la biodiversidad', shortLabel: 'Biodiversidad', category: 'social' },
+  { id: 'impacto-social', label: 'Impacto social positivo / Empleo digno', shortLabel: 'Impacto social', category: 'social' },
+  { id: 'cero-residuos', label: 'Cero residuos (Zero Waste)', shortLabel: 'Cero residuos', category: 'social' },
 ];
 
 const CATALOG_CATEGORIES = [
@@ -184,8 +183,8 @@ export class HomeComponent implements OnInit {
     return SUSTAINABILITY_FILTERS.find(f => f.id === filterId)?.label || '';
   }
 
-  getFilterIcon(filterId: string): string {
-    return SUSTAINABILITY_FILTERS.find(f => f.id === filterId)?.icon || '';
+  getFilterShortLabel(filterId: string): string {
+    return SUSTAINABILITY_FILTERS.find(f => f.id === filterId)?.shortLabel || '';
   }
 
   hasActiveFilters(): boolean {
