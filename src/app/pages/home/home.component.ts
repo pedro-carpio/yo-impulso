@@ -35,7 +35,7 @@ const MOCK_PRODUCTS: MarketplaceProduct[] = [
   {
     PK_product: 2, FK_entrepreneurship: 3,
     productName: 'Jabón Saponificado Aloe Vera', salePrice: 45, discountPrice: 38,
-    mainImage: 'assets/products/aloe-leben.jpg',
+    mainImage: 'assets/emprendimientos/aloe-leben.jpg',
     isAvailable: true,
     tbentrepreneurships: { businessName: 'Aloe Leben' },
   },

@@ -14,6 +14,7 @@ frontend:
     build:
       commands:
         - npx ng build --configuration=production
+        - cp _headers dist/amplify-angular-template/browser/
   artifacts:
     baseDirectory: dist/amplify-angular-template/browser
     files:
