@@ -31,10 +31,14 @@ export class TodosComponent implements OnInit {
     }
   }
 
-  createTodo() {
+  createTodo(content: string) {
+    const trimmed = content.trim();
+    if (!trimmed) {
+      return;
+    }
     try {
       client.models.Todo.create({
-        content: window.prompt('Todo content'),
+        content: trimmed,
       });
       this.listTodos();
     } catch (error) {

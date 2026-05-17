@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Ecoimpulso icon">
+  <rect width="512" height="512" rx="120" fill="#f2f7f4"/>
+  <circle cx="312" cy="210" r="110" fill="#ff6b35"/>
+  <path d="M106 286c62-110 136-152 220-152-12 64-44 120-112 182-44 40-92 64-146 78 18-40 28-72 38-108z" fill="#2a6f54"/>
+  <circle cx="312" cy="210" r="58" fill="#f2f7f4"/>
+  <path d="M378 146l46-34-16 52z" fill="#2a6f54"/>
+</svg>

@@ -1,18 +1,69 @@
-<!-- todos.component.html -->
-<main>
-    <h1>My todos</h1>
-    <button (click)="createTodo()">+ new</button>
-    <ul>
-        <li 
-            *ngFor="let todo of todos;">
-            {{ todo.content }}
-        </li>
-    </ul>
-    <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/gen2/start/quickstart/">
-            Review next steps of this tutorial.
-        </a>
-    </div>
+<main class="page">
+    <header class="nav">
+        <div class="brand">
+            <div class="brand-mark">Y</div>
+            <div>
+                <div class="brand-title">Yo Impulso</div>
+                <div class="brand-sub">Rumbo a una llajta sostenible</div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <span class="badge badge-ember">Toma Impulso</span>
+            <button class="btn btn-outline" type="button">Guia practica</button>
+            <button class="btn btn-primary" type="button">Iniciar diagnostico</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <p class="eyebrow">Diagnostico comunitario</p>
+            <h1 class="hero-title">Impulsa tu <span>emprendimiento circular</span> con evidencia local.</h1>
+            <p class="hero-body">
+                Prioriza acciones sostenibles con una ruta clara para proveedores, residuos y energia.
+                Este panel es la base de tu PWA: rapido, instalable y alineado con el lenguaje Ecoimpulso.
+            </p>
+            <div class="stat-row">
+                <div>
+                    <p class="stat-value">62%</p>
+                    <p class="stat-label">Ahorro potencial en agua</p>
+                </div>
+                <div>
+                    <p class="stat-value">12</p>
+                    <p class="stat-label">Acciones locales activas</p>
+                </div>
+                <div>
+                    <p class="stat-value">0</p>
+                    <p class="stat-label">Residuos sin trazabilidad</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-card">
+            <h2>Acciones inmediatas</h2>
+            <p>Registra tareas concretas y visibiliza el avance de tu equipo.</p>
+            <div class="input-row">
+                <input #todoInput type="text" placeholder="Ej. Separar residuos de vidrio" />
+                <button class="btn btn-primary" type="button" (click)="createTodo(todoInput.value); todoInput.value = ''">
+                    Agregar
+                </button>
+            </div>
+            <ul class="todo-list">
+                <li class="todo-item" *ngFor="let todo of todos;">
+                    {{ todo.content }}
+                </li>
+            </ul>
+            <div class="empty-state" *ngIf="todos.length === 0">
+                Aun no hay acciones registradas. Empieza con un cambio pequeno y medible.
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-panel">
+        <h3>Fronteras planetarias locales</h3>
+        <p>Mitigacion de emisiones, cuidado del agua y economia circular al alcance de tu barrio.</p>
+        <div class="impact-actions">
+            <button class="btn btn-dark" type="button">Ver mapa de impacto</button>
+            <button class="btn btn-outline" type="button">Descargar guia</button>
+        </div>
+    </section>
 </main>

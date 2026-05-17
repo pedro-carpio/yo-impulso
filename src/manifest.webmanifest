@@ -1,0 +1,23 @@
+{
+  "name": "Yo Impulso — Ecoimpulso",
+  "short_name": "Yo Impulso",
+  "description": "Diagnostico comunitario y acciones circulares para emprendimientos locales.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f2f7f4",
+  "theme_color": "#11221a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/ecoimpulso-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icons/ecoimpulso-icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
