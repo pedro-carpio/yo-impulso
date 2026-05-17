@@ -26,7 +26,93 @@
 
   <!-- Products grid -->
   <section class="products-section">
-    <h3 class="section-label">Descubre Productos</h3>
+    <div class="section-header">
+      <h3 class="section-label">Descubre Productos</h3>
+      <button class="filter-btn" (click)="toggleFilterPanel()" [class.active]="hasActiveFilters()">
+        <span class="filter-icon">⚙️</span>
+        <span class="filter-label">Filtrar</span>
+        @if (hasActiveFilters()) {
+          <span class="filter-badge">{{ selectedSustainabilityFilters.size }}</span>
+        }
+      </button>
+    </div>
+
+    <!-- Filter Panel -->
+    @if (showFilterPanel) {
+      <div class="filter-panel">
+        <div class="filter-group">
+          <h4 class="filter-group-title">🌍 Sostenibilidad Ambiental</h4>
+          <div class="filter-options">
+            @for (filter of sustainabilityFilters | filter: 'environmental'; track filter.id) {
+              <button
+                class="filter-option"
+                [class.selected]="selectedSustainabilityFilters.has(filter.id)"
+                (click)="toggleSustainabilityFilter(filter.id)"
+                [title]="filter.label"
+              >
+                <span class="filter-option-icon">{{ filter.icon }}</span>
+                <span class="filter-option-label">{{ filter.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-group-title">🤝 Historia y Valor Artesanal</h4>
+          <div class="filter-options">
+            @for (filter of sustainabilityFilters | filter: 'artisanal'; track filter.id) {
+              <button
+                class="filter-option"
+                [class.selected]="selectedSustainabilityFilters.has(filter.id)"
+                (click)="toggleSustainabilityFilter(filter.id)"
+                [title]="filter.label"
+              >
+                <span class="filter-option-icon">{{ filter.icon }}</span>
+                <span class="filter-option-label">{{ filter.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-group-title">♻️ Origen y Materialidad</h4>
+          <div class="filter-options">
+            @for (filter of sustainabilityFilters | filter: 'material'; track filter.id) {
+              <button
+                class="filter-option"
+                [class.selected]="selectedSustainabilityFilters.has(filter.id)"
+                (click)="toggleSustainabilityFilter(filter.id)"
+                [title]="filter.label"
+              >
+                <span class="filter-option-icon">{{ filter.icon }}</span>
+                <span class="filter-option-label">{{ filter.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-group-title">🤲 Impacto Regenerativo y Social</h4>
+          <div class="filter-options">
+            @for (filter of sustainabilityFilters | filter: 'social'; track filter.id) {
+              <button
+                class="filter-option"
+                [class.selected]="selectedSustainabilityFilters.has(filter.id)"
+                (click)="toggleSustainabilityFilter(filter.id)"
+                [title]="filter.label"
+              >
+                <span class="filter-option-icon">{{ filter.icon }}</span>
+                <span class="filter-option-label">{{ filter.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+
+        <button class="clear-filters-btn" (click)="selectedSustainabilityFilters.clear(); showFilterPanel = false">
+          Limpiar filtros
+        </button>
+      </div>
+    }
 
     @if (loading) {
       <div class="skeleton-grid">
@@ -36,7 +122,7 @@
       </div>
     } @else if (filteredProducts.length === 0) {
       <div class="empty-state">
-        <p>No se encontraron productos para tu busqueda.</p>
+        <p>No se encontraron productos para tu búsqueda.</p>
       </div>
     } @else {
       <div class="products-grid">
@@ -52,11 +138,34 @@
               @if (product.discountPrice && product.salePrice) {
                 <span class="discount-badge">-{{ discountPercent(product) }}%</span>
               }
+              @if (product.sustainabilityTags && product.sustainabilityTags.length > 0) {
+                <div class="sustainability-tags">
+                  @for (tagId of product.sustainabilityTags; track tagId) {
+                    <span class="sustainability-tag" [title]="getFilterLabel(tagId)">
+                      {{ getFilterIcon(tagId) }}
+                    </span>
+                  }
+                </div>
+              }
             </div>
             <div class="product-info">
               <p class="product-name">{{ product.productName }}</p>
               @if (product.tbentrepreneurships?.businessName) {
                 <p class="product-biz">{{ product.tbentrepreneurships!.businessName }}</p>
+              }
+              @if (product.sustainabilityTags && product.sustainabilityTags.length > 0) {
+                <div class="product-tags">
+                  @for (tagId of product.sustainabilityTags | slice: 0:2; track tagId) {
+                    <span class="tag-badge" [title]="getFilterLabel(tagId)">
+                      {{ getFilterLabel(tagId) | slice: 0:20 }}{{ getFilterLabel(tagId).length > 20 ? '...' : '' }}
+                    </span>
+                  }
+                  @if (product.sustainabilityTags.length > 2) {
+                    <span class="tag-badge tag-badge-more">
+                      +{{ product.sustainabilityTags.length - 2 }}
+                    </span>
+                  }
+                </div>
               }
               <div class="product-price-row">
                 @if (product.discountPrice) {
